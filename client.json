@@ -1,8 +1,14 @@
 {
-    "clients" : [
-        {"id": 1, "name" : "William", "email":"william@email.com","value":"100","date":"01/06"},
-        {"id":2, "name":"Kaue", "email":"kaue@email.com","value":"50","date":"10/05"},
-        {"id":3, "name":"nicolas", "email":"nicolas@email.com","value":"670","date":"07/11"},
-        {"id":4, "name":"julio", "email":"julio@email.com","value":"80","date":"27/03"}
-    ]
+  "clients": [
+    {
+      "id": 1,
+      "name": "william",
+      "email": "rafael@hotmail.com"
+    },
+    {
+      "id": 2,
+      "name": "adsada",
+      "email": "dasdasd"
+    }
+  ]
 }
