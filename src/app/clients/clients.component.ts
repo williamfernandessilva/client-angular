@@ -1,7 +1,7 @@
 import { Component, OnInit,  } from '@angular/core';
 import { ClientService } from '../client.service';
 import { Client } from '../client';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ThisReceiver } from '@angular/compiler';
 
 @Component({
@@ -14,21 +14,22 @@ export class ClientsComponent implements OnInit {
   clients: Client[] = [];
   isEditing : Boolean = false;
   formGroupClient : FormGroup;
+  submitted: boolean = false;
 
 
-  constructor(private clientService: ClientService, 
+  constructor(private clientService: ClientService,
               private formBuilder: FormBuilder) {
     this.formGroupClient = formBuilder.group({
       id : [''],
-      name : [''],
-      email : ['']
+      name : ['', [Validators.required]],
+      email : ['', [Validators.required, Validators.email]]
 
     });
   }
 
   ngOnInit(): void {
     this.loadClients();
-   
+
   }
   loadClients() {
     this.clientService.getClients().subscribe(
@@ -36,11 +37,14 @@ export class ClientsComponent implements OnInit {
         next : data => this.clients = data
       }
     );
-  
+
   }
 
  save(){
-if(this.isEditing)
+  this.submitted = true;
+  if(this.formGroupClient.valid)
+
+    if(this.isEditing)
 
     {
       this.clientService.update(this.formGroupClient.value).subscribe(
@@ -49,6 +53,7 @@ if(this.isEditing)
             this.loadClients();
             this.formGroupClient.reset();
             this.isEditing = false;
+            this.submitted = false;
 
           }
         }
@@ -61,15 +66,13 @@ if(this.isEditing)
         next: data => {
           this.clients.push(data);
           this.formGroupClient.reset();
+          this.submitted = false;
         }
     }
 
-    );
+    )
   }
-
-
-      
-  }
+ }
 
   clean(){
     this.formGroupClient.reset();
@@ -79,7 +82,7 @@ if(this.isEditing)
   edit(client: Client){
     this.formGroupClient.setValue(client);
     this.isEditing = true;
-    
+
 
 
 
@@ -92,6 +95,15 @@ if(this.isEditing)
 
 
   }
+
+  get name( ) : any {
+    return this.formGroupClient.get("name");
+  }
+
+  get email( ) : any {
+    return this.formGroupClient.get("email");
+  }
+
 
 
 

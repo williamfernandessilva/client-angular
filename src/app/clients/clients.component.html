@@ -1,4 +1,4 @@
-
+<br><br>
 <div class="row">
     <div class="col-8 m-auto">
 
@@ -14,16 +14,25 @@
         <input type="text" formControlName="name"    class="form-control" id="name" placeholder="Nome">
       </div>
 
+      <div *ngIf="submitted && name.invalid">
+        <small class="text-danger">Nome Inválido</small>
+      </div>
+
       <div class="mb-3">
         <label for="email" class="form-label">Email:</label>
         <input type="email" formControlName="email"   class="form-control" id="email" placeholder="Email">
       </div>
+
+      <div *ngIf="submitted && email.invalid">
+        <small class="text-danger">Email Inválido</small>
+      </div>
+
       <div class="mb-3">
       <button class="btn btn-primary me-1"(click)="save()">Salvar</button>
       <button class="btn btn-secondary me-1"(click)="clean()">Limpar</button>
 
     </div>
-  
+
 </form>
 
 
@@ -48,10 +57,8 @@
         <th scope="col">Id</th>
         <th scope="col">Nome</th>
         <th scope="col">Email</th>
-        <th scope="col">Opções</th>
-        <th scope="col">Valor</th>
-        <th scope="col">Data</th>
-       
+
+
       </tr>
     </thead>
     <tbody>
@@ -63,8 +70,8 @@
         <td>{{client.date}}</td>
         <button class="btn btn-primary me-1" (click)="edit(client)">Editar</button>
         <button class="btn btn-secondary" (click)="delete(client)">Excluir</button>
-        
- 
+
+
     </tbody>
   </table>
 </div>
