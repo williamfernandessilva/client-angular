@@ -1,0 +1,47 @@
+<br><br>
+<div class="row">
+
+
+
+    <div class="col-8 m-auto">
+
+
+      <form [formGroup]="formGroupClient">
+      <div class="mb-3">
+<div class="display-6 text-center">
+      </div>
+    </div>
+
+      <div class="mb-3">
+        <label for="name" class="form-label">Nome:</label>
+        <input type="text" formControlName="name"    class="form-control" id="name" placeholder="Nome">
+      </div>
+
+      <div *ngIf="submitted && name.invalid">
+        <small class="text-danger">Nome Inválido</small>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" formControlName="email"   class="form-control" id="email" placeholder="Email">
+      </div>
+
+      <div *ngIf="submitted && email.invalid">
+        <small class="text-danger">Email Inválido</small>
+      </div>
+
+      <div class="mb-3">
+      <button class="btn btn-primary me-1"(click)="save()">Salvar</button>
+      <button class="btn btn-secondary me-1"(click)="cancel()">Voltar</button>
+
+    </div>
+
+</form>
+
+
+
+
+
+
+
+

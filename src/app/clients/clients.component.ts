@@ -3,6 +3,7 @@ import { ClientService } from '../client.service';
 import { Client } from '../client';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ThisReceiver } from '@angular/compiler';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-clients',
@@ -12,20 +13,15 @@ import { ThisReceiver } from '@angular/compiler';
 export class ClientsComponent implements OnInit {
 
   clients: Client[] = [];
-  isEditing : Boolean = false;
-  formGroupClient : FormGroup;
-  submitted: boolean = false;
+
+
 
 
   constructor(private clientService: ClientService,
-              private formBuilder: FormBuilder) {
-    this.formGroupClient = formBuilder.group({
-      id : [''],
-      name : ['', [Validators.required]],
-      email : ['', [Validators.required, Validators.email]]
+    private router : Router       ){
 
-    });
   }
+
 
   ngOnInit(): void {
     this.loadClients();
@@ -40,48 +36,15 @@ export class ClientsComponent implements OnInit {
 
   }
 
- save(){
-  this.submitted = true;
-  if(this.formGroupClient.valid)
 
-    if(this.isEditing)
-
-    {
-      this.clientService.update(this.formGroupClient.value).subscribe(
-        {
-          next: data => {
-            this.loadClients();
-            this.formGroupClient.reset();
-            this.isEditing = false;
-            this.submitted = false;
-
-          }
-        }
-      )
-
-    }
-    else{
-    this.clientService.save(this.formGroupClient.value).subscribe(
-    {
-        next: data => {
-          this.clients.push(data);
-          this.formGroupClient.reset();
-          this.submitted = false;
-        }
-    }
-
-    )
-  }
+ create(){
+  this.router.navigate(['createClient']);
  }
 
-  clean(){
-    this.formGroupClient.reset();
-    this.isEditing = false;
-  }
+
 
   edit(client: Client){
-    this.formGroupClient.setValue(client);
-    this.isEditing = true;
+    this.router.navigate(['clientDatails', client.id]);
 
 
 
@@ -95,15 +58,6 @@ export class ClientsComponent implements OnInit {
 
 
   }
-
-  get name( ) : any {
-    return this.formGroupClient.get("name");
-  }
-
-  get email( ) : any {
-    return this.formGroupClient.get("email");
-  }
-
 
 
 

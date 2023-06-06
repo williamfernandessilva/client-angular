@@ -3,5 +3,5 @@ export interface Client{
     name : string;
     email : string;
     date : string;
-    value : string; 
+    value : string;
 }

@@ -13,7 +13,12 @@ export class ClientService {
 
  getClients(): Observable<Client[]>{
   return this.http.get<Client[]>(this.url)
+
  }
+ getClient(id: number): Observable<Client[]> {
+  return this.http.get<Client[]>(`${this.url}/${id}`);
+ }
+
 
 
  save(client:Client):Observable<Client>{
