@@ -25,6 +25,8 @@ export class ClientFormComponent implements OnInit {
 this.formGroupClient = formBuilder.group({
 id : [''],
 name : ['', [Validators.required]],
+rg : ['', [Validators.required]],
+telefone : ['', [Validators.required]],
 email : ['', [Validators.required, Validators.email]]
 
 });
@@ -80,6 +82,13 @@ get name( ) : any {
 
 get email( ) : any {
   return this.formGroupClient.get("email");
+}
+
+get rg( ) : any {
+  return this.formGroupClient.get("rg");
+}
+get telefone( ) : any {
+  return this.formGroupClient.get("telefone");
 }
 
 

@@ -1,24 +1,11 @@
 {
   "clients": [
     {
-      "id": 2,
-      "name": "william",
-      "email": "william@hotmail.com"
-    },
-    {
-      "id": 3,
-      "name": "sdasd",
-      "email": "gabriel@gmail.com"
-    },
-    {
-      "id": 4,
-      "name": "12321",
-      "email": "g@as.com"
-    },
-    {
       "id": 5,
-      "name": "",
-      "email": ""
+      "name": "William Fernandes Silva ",
+      "rg": "43689864-78",
+      "telefone": "(11)87654-5267",
+      "email": "willgsvs@hotmail.com"
     }
   ]
 }

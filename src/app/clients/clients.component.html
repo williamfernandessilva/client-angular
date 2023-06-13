@@ -15,6 +15,8 @@
         <th scope="col">Id</th>
         <th scope="col">Nome</th>
         <th scope="col">Email</th>
+        <th scope="col">Rg</th>
+        <th scope="col">Telefone</th>
 
 
       </tr>
@@ -24,9 +26,9 @@
         <th scope="row">{{client.id}}</th>
         <td>{{client.name}} </td>
         <td>{{client.email}}</td>
-        <td>{{client.value}}</td>
-        <td>{{client.date}}</td>
-        
+        <td>{{client.rg}}</td>
+        <td>{{client.telefone}}</td>
+
         <button class="btn btn-primary me-1" (click)="edit(client)">Editar</button>
         <button class="btn btn-primary" (click)="delete(client)">Excluir</button>
 
